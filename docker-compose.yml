@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: 3ab769ad3729
+    ports:
+      - 80:80
+    volumes:
+       - ./:/srv/app/
+       - ./.docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
+    links:
+      - mysql
+    depends_on:
+        - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: recipes
+      DB_USERNAME: root
+      DB_PASSWORD: milladoiro
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_DATABASE: recipes
+      MYSQL_USER: root
+      MYSQL_PASSWORD: milladoiro
+      MYSQL_ROOT_PASSWORD: milladoiro
+    volumes:
+           - ./:/srv/app/
