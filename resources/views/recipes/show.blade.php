@@ -89,7 +89,7 @@
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
-                            <p>{!! $recipe->description !!}</p>
+                            {!! $recipe->description !!}
                         </div>
                         <!-- Single Preparation Step -->
                         <!--<div class="single-preparation-step d-flex">
